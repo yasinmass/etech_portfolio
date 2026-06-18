@@ -89,43 +89,185 @@
 
     </section>
 
-    <section class="gallery" id="projects">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Our work</p>
-          <h2>Recent projects</h2>
-          <p>Sample images shown below — swap these for your own project photos.</p>
-        </div>
-        <div class="showcase">
-          <div class="showcase-item reveal">
-            <div class="showcase-img"><img src="https://picsum.photos/seed/etech-house1/900/520" alt="Completed house project, sample image" loading="lazy"></div>
-            <div class="showcase-info">
-              <p class="eyebrow">Completed project</p>
-              <h3>Independent house — Attur</h3>
-              <p>Planned, designed and built end to end, from the first site visit to handover.</p>
-              <div class="project-divider"></div>
-              <div class="project-stats">
-                <div>
-                  <p class="stat-label">Area (SBA)</p>
-                  <p class="stat-value">1,800 sq.ft</p>
+    <section class="projects-section" id="projects" aria-label="Our Projects">
+      <div class="projects-header wrap">
+        <p class="eyebrow">Our work</p>
+        <h2>Featured Projects</h2>
+      </div>
+
+      <div class="carousel-wrapper" id="projectCarousel">
+        <!-- Nav arrows (desktop) -->
+        <button class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Previous project">
+          <i class="ti ti-chevron-left"></i>
+        </button>
+        <button class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Next project">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+
+        <!-- Track -->
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- Project 1 -->
+          <div class="proj-card" data-index="0">
+            <div class="proj-media">
+              <div class="proj-img ken-burns" style="background-image:url('assets/elevations/build1.jpeg')"></div>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">Completed Project</span>
+              <span class="proj-counter">01 / 05</span>
+            </div>
+            <div class="proj-info">
+              <p class="proj-location"><i class="ti ti-map-pin"></i> Attur, Salem</p>
+              <h3 class="proj-name">Modern 3-Floor Residence</h3>
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Built Area</span>
+                  <span class="proj-meta-value">3,200 sq.ft</span>
                 </div>
-                <div>
-                  <p class="stat-label">Timeline</p>
-                  <p class="stat-value">7 months</p>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Timeline</span>
+                  <span class="proj-meta-value">14 months</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Type</span>
+                  <span class="proj-meta-value">Residential</span>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Project 2 -->
+          <div class="proj-card" data-index="1">
+            <div class="proj-media">
+              <div class="proj-img ken-burns" style="background-image:url('assets/elevations/build2.jpeg')"></div>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">Completed Project</span>
+              <span class="proj-counter">02 / 05</span>
+            </div>
+            <div class="proj-info">
+              <p class="proj-location"><i class="ti ti-map-pin"></i> Attur, Salem</p>
+              <h3 class="proj-name">White Contemporary Villa</h3>
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Built Area</span>
+                  <span class="proj-meta-value">2,400 sq.ft</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Timeline</span>
+                  <span class="proj-meta-value">10 months</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Type</span>
+                  <span class="proj-meta-value">Residential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="proj-card" data-index="2">
+            <div class="proj-media">
+              <div class="proj-img ken-burns" style="background-image:url('assets/elevations/build3.jpeg')"></div>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">Completed Project</span>
+              <span class="proj-counter">03 / 05</span>
+            </div>
+            <div class="proj-info">
+              <p class="proj-location"><i class="ti ti-map-pin"></i> Attur, Salem</p>
+              <h3 class="proj-name">Classic Dual-Tone Elevation</h3>
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Built Area</span>
+                  <span class="proj-meta-value">2,800 sq.ft</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Timeline</span>
+                  <span class="proj-meta-value">11 months</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Type</span>
+                  <span class="proj-meta-value">Residential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="proj-card" data-index="3">
+            <div class="proj-media">
+              <div class="proj-img ken-burns" style="background-image:url('assets/elevations/build4.jpeg')"></div>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">Completed Project</span>
+              <span class="proj-counter">04 / 05</span>
+            </div>
+            <div class="proj-info">
+              <p class="proj-location"><i class="ti ti-map-pin"></i> Attur, Salem</p>
+              <h3 class="proj-name">Blue &amp; Gold Luxury Home</h3>
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Built Area</span>
+                  <span class="proj-meta-value">1,900 sq.ft</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Timeline</span>
+                  <span class="proj-meta-value">8 months</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Type</span>
+                  <span class="proj-meta-value">Residential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="proj-card" data-index="4">
+            <div class="proj-media">
+              <div class="proj-img ken-burns" style="background-image:url('assets/elevations/build6.jpeg')"></div>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">Completed Project</span>
+              <span class="proj-counter">05 / 05</span>
+            </div>
+            <div class="proj-info">
+              <p class="proj-location"><i class="ti ti-map-pin"></i> Attur, Salem</p>
+              <h3 class="proj-name">Blue &amp; White Modern House</h3>
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Built Area</span>
+                  <span class="proj-meta-value">2,100 sq.ft</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Timeline</span>
+                  <span class="proj-meta-value">9 months</span>
+                </div>
+                <div class="proj-meta-divider"></div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Type</span>
+                  <span class="proj-meta-value">Residential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /carousel-track -->
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="carouselDots" aria-label="Project navigation">
+          <button class="cdot active" data-index="0" aria-label="Project 1"></button>
+          <button class="cdot" data-index="1" aria-label="Project 2"></button>
+          <button class="cdot" data-index="2" aria-label="Project 3"></button>
+          <button class="cdot" data-index="3" aria-label="Project 4"></button>
+          <button class="cdot" data-index="4" aria-label="Project 5"></button>
         </div>
-        <p class="more-label">More from our recent work</p>
-        <div class="gallery-grid">
-          <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-site1/360/270" alt="Construction site in progress, sample image" loading="lazy"><span class="gallery-tag">In progress</span></div>
-          <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-house3/360/270" alt="Completed house project, sample image" loading="lazy"><span class="gallery-tag">Residential</span></div>
-          <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-interior1/360/270" alt="Interior finishing work, sample image" loading="lazy"><span class="gallery-tag">Interior</span></div>
-          <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-site2/360/270" alt="Construction site, sample image" loading="lazy"><span class="gallery-tag">In progress</span></div>
-        </div>
-        <p class="gallery-note">Showing placeholder images for now — send your real project photos and we'll swap them in.</p>
-      </div>
+      </div><!-- /carousel-wrapper -->
     </section>
 
     <section class="services" id="services">

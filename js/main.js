@@ -148,4 +148,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   // ── End Hero Slideshow ───────────────────────────────────────────────────────
+
+  // ── Project Carousel ─────────────────────────────────────────────────────────
+  const track      = document.getElementById('carouselTrack');
+  const prevBtn    = document.getElementById('carouselPrev');
+  const nextBtn    = document.getElementById('carouselNext');
+  const cdots      = document.querySelectorAll('.cdot');
+  const projCards  = document.querySelectorAll('.proj-card');
+  let carouselIdx  = 0;
+  const carouselTotal = projCards.length;
+
+  function goToProject(idx) {
+    // Clamp with wrap-around
+    carouselIdx = (idx + carouselTotal) % carouselTotal;
+    track.style.transform = `translateX(-${carouselIdx * 100}%)`;
+    // Update dots
+    cdots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
+  }
+
+  if (track && carouselTotal > 0) {
+    // Arrow clicks
+    if (prevBtn) prevBtn.addEventListener('click', () => goToProject(carouselIdx - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToProject(carouselIdx + 1));
+
+    // Dot clicks
+    cdots.forEach(d => {
+      d.addEventListener('click', () => goToProject(parseInt(d.dataset.index, 10)));
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  goToProject(carouselIdx - 1);
+      if (e.key === 'ArrowRight') goToProject(carouselIdx + 1);
+    });
+
+    // Touch / mouse drag swipe
+    let dragStartX = null;
+    let dragDeltaX = 0;
+    const SWIPE_THRESHOLD = 50;
+
+    function onDragStart(e) {
+      dragStartX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+      dragDeltaX = 0;
+      track.classList.add('is-dragging');
+    }
+
+    function onDragMove(e) {
+      if (dragStartX === null) return;
+      const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      dragDeltaX = x - dragStartX;
+      track.style.transform = `translateX(calc(-${carouselIdx * 100}% + ${dragDeltaX}px))`;
+    }
+
+    function onDragEnd() {
+      if (dragStartX === null) return;
+      track.classList.remove('is-dragging');
+      if (dragDeltaX < -SWIPE_THRESHOLD)      goToProject(carouselIdx + 1);
+      else if (dragDeltaX > SWIPE_THRESHOLD)  goToProject(carouselIdx - 1);
+      else                                     goToProject(carouselIdx); // snap back
+      dragStartX = null;
+    }
+
+    // Mouse events
+    track.addEventListener('mousedown',  onDragStart);
+    track.addEventListener('mousemove',  onDragMove);
+    track.addEventListener('mouseup',    onDragEnd);
+    track.addEventListener('mouseleave', onDragEnd);
+
+    // Touch events
+    track.addEventListener('touchstart', onDragStart, { passive: true });
+    track.addEventListener('touchmove',  onDragMove,  { passive: true });
+    track.addEventListener('touchend',   onDragEnd);
+  }
+  // ── End Project Carousel ─────────────────────────────────────────────────────
 });
