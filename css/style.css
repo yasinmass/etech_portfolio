@@ -292,7 +292,8 @@ nav.links a:hover::after {
 /* Individual slide */
 .hero-slide {
   position: absolute;
-  inset: 0; /* Cover container fully without extra crop margins */
+  inset: 0;
+  /* Cover container fully without extra crop margins */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -309,12 +310,18 @@ nav.links a:hover::after {
 .hero-slide.fade-out {
   opacity: 0;
   transition: opacity 0.8s ease;
-  transform: scale(1.08); /* Retain final zoom scale during transition to prevent snapping */
+  transform: scale(1.08);
+  /* Retain final zoom scale during transition to prevent snapping */
 }
 
 @keyframes cinematicPushIn {
-  0%   { transform: scale(1.0); }
-  100% { transform: scale(1.08); }
+  0% {
+    transform: scale(1.0);
+  }
+
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 /* Dark overlay with premium architectural lighting beam */
@@ -322,14 +329,12 @@ nav.links a:hover::after {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: 
+  background:
     radial-gradient(circle at 15% 20%, rgba(255, 235, 205, 0.14) 0%, transparent 60%),
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       rgba(10, 8, 6, 0.35) 0%,
       rgba(10, 8, 6, 0.50) 50%,
-      rgba(10, 8, 6, 0.80) 100%
-    );
+      rgba(10, 8, 6, 0.80) 100%);
   pointer-events: none;
 }
 
@@ -345,8 +350,15 @@ nav.links a:hover::after {
 }
 
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Main title */
@@ -397,7 +409,8 @@ nav.links a:hover::after {
   border: 1px solid var(--orange);
   padding: 16px 48px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 0; /* Premium architectural sharp look */
+  border-radius: 0;
+  /* Premium architectural sharp look */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -486,7 +499,7 @@ nav.links a:hover::after {
 
 /* ---------- Projects Showcase Carousel ---------- */
 .projects-section {
-  background: var(--charcoal);
+  background: var(--white);
   padding: 0;
   overflow: hidden;
 }
@@ -494,15 +507,15 @@ nav.links a:hover::after {
 .projects-header {
   padding: 64px 20px 40px;
   text-align: center;
-  color: #fff;
+  color: var(--ink);
 }
 
 .projects-header .eyebrow {
-  color: var(--orange);
+  color: var(--muted);
 }
 
 .projects-header h2 {
-  color: #fff;
+  color: var(--ink);
   font-size: clamp(1.5rem, 5vw, 2.2rem);
   margin: 0;
 }
@@ -512,7 +525,8 @@ nav.links a:hover::after {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding-bottom: 56px; /* room for dots */
+  padding-bottom: 56px;
+  /* room for dots */
 }
 
 /* The sliding track */
@@ -535,6 +549,8 @@ nav.links a:hover::after {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  border: 1px solid var(--line);
+  background: #f7f6f3;
 }
 
 @media (min-width: 860px) {
@@ -558,43 +574,50 @@ nav.links a:hover::after {
   }
 }
 
+/* Portrait adaptive styling container */
+.proj-media.has-portrait {
+  background-color: #0d0c0a;
+  background-image: radial-gradient(circle at center, #1f1d1a 0%, #0a0908 100%);
+}
+
 /* Background image with Ken Burns animation */
 .proj-img {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Landscape images fill the container naturally */
   animation: projKenBurns 8s ease-in-out infinite alternate;
 }
 
+/* Portrait adaptive styling image override */
+.proj-media.has-portrait .proj-img {
+  object-fit: contain;
+  /* Portrait/Square images display completely with no cropping */
+}
+
 @keyframes projKenBurns {
-  0%   { transform: scale(1.0) translate(0%, 0%); }
-  33%  { transform: scale(1.05) translate(-1%, 0.5%); }
-  66%  { transform: scale(1.08) translate(1%, -0.5%); }
-  100% { transform: scale(1.04) translate(0%, 0.5%); }
-}
-
-/* Dark cinematic overlay over image */
-.proj-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 8, 6, 0.55) 0%,
-    rgba(10, 8, 6, 0.20) 50%,
-    rgba(10, 8, 6, 0.60) 100%
-  );
-  pointer-events: none;
-}
-
-@media (min-width: 860px) {
-  .proj-img-overlay {
-    background: linear-gradient(
-      to right,
-      rgba(10, 8, 6, 0.15) 0%,
-      rgba(10, 8, 6, 0.70) 100%
-    );
+  0% {
+    transform: scale(1.0) translate(0%, 0%);
   }
+
+  33% {
+    transform: scale(1.05) translate(-1%, 0.5%);
+  }
+
+  66% {
+    transform: scale(1.08) translate(1%, -0.5%);
+  }
+
+  100% {
+    transform: scale(1.04) translate(0%, 0.5%);
+  }
+}
+
+/* Dark cinematic overlay over image (disabled to keep images bright) */
+.proj-img-overlay {
+  display: none;
 }
 
 /* Status badge */
@@ -617,7 +640,7 @@ nav.links a:hover::after {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -626,7 +649,7 @@ nav.links a:hover::after {
 
 /* Info panel */
 .proj-info {
-  background: #1a1816;
+  background: #f7f6f3;
   padding: 36px 32px;
   display: flex;
   flex-direction: column;
@@ -652,7 +675,7 @@ nav.links a:hover::after {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #fff;
+  color: var(--ink);
   line-height: 1.15;
   margin: 0;
 }
@@ -662,7 +685,7 @@ nav.links a:hover::after {
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--line);
   padding-top: 20px;
   margin-top: 4px;
 }
@@ -683,20 +706,20 @@ nav.links a:hover::after {
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: var(--muted);
 }
 
 .proj-meta-value {
   font-family: var(--display);
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--ink);
   letter-spacing: 0.02em;
 }
 
 .proj-meta-divider {
   width: 1px;
-  background: rgba(255,255,255,0.1);
+  background: var(--line);
   margin: 0 20px 0 0;
   align-self: stretch;
 }
@@ -709,38 +732,40 @@ nav.links a:hover::after {
   z-index: 10;
   width: 48px;
   height: 48px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
-  font-size: 1.2rem;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s;
-  backdrop-filter: blur(8px);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform 0.25s, opacity 0.25s, color 0.25s;
+  padding: 0;
 }
 
 .carousel-arrow:hover {
-  background: var(--orange);
-  border-color: var(--orange);
+  transform: translateY(-50%) scale(1.15);
+  color: var(--orange) !important;
 }
 
 .carousel-arrow-prev {
   left: 16px;
+  color: #ffffff;
 }
 
 .carousel-arrow-next {
   right: 16px;
+  color: var(--ink);
 }
 
 @media (max-width: 640px) {
   .carousel-arrow {
-    top: calc(50vw * 9/16 / 2); /* center on image area */
+    top: calc(50vw * 9 / 16);
+    /* center on image area */
     transform: translateY(-50%);
     width: 36px;
     height: 36px;
-    font-size: 1rem;
+    color: #ffffff;
   }
 }
 
@@ -758,7 +783,7 @@ nav.links a:hover::after {
 .cdot {
   width: 28px;
   height: 3px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(33, 31, 28, 0.20);
   border: none;
   cursor: pointer;
   padding: 0;

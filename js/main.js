@@ -157,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const projCards  = document.querySelectorAll('.proj-card');
   let carouselIdx  = 0;
   const carouselTotal = projCards.length;
+  let carouselTimer = null;
+  const CAROUSEL_DURATION = 3000; // 3 seconds per slide
 
   function goToProject(idx) {
     // Clamp with wrap-around
@@ -166,20 +168,53 @@ document.addEventListener('DOMContentLoaded', () => {
     cdots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
   }
 
+  function startCarouselTimer() {
+    carouselTimer = setInterval(() => {
+      goToProject(carouselIdx + 1);
+    }, CAROUSEL_DURATION);
+  }
+
+  function resetCarouselTimer() {
+    clearInterval(carouselTimer);
+    startCarouselTimer();
+  }
+
   if (track && carouselTotal > 0) {
+    // Start auto-play
+    startCarouselTimer();
+
     // Arrow clicks
-    if (prevBtn) prevBtn.addEventListener('click', () => goToProject(carouselIdx - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goToProject(carouselIdx + 1));
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToProject(carouselIdx - 1);
+        resetCarouselTimer();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToProject(carouselIdx + 1);
+        resetCarouselTimer();
+      });
+    }
 
     // Dot clicks
     cdots.forEach(d => {
-      d.addEventListener('click', () => goToProject(parseInt(d.dataset.index, 10)));
+      d.addEventListener('click', () => {
+        goToProject(parseInt(d.dataset.index, 10));
+        resetCarouselTimer();
+      });
     });
 
     // Keyboard navigation
     document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft')  goToProject(carouselIdx - 1);
-      if (e.key === 'ArrowRight') goToProject(carouselIdx + 1);
+      if (e.key === 'ArrowLeft') {
+        goToProject(carouselIdx - 1);
+        resetCarouselTimer();
+      }
+      if (e.key === 'ArrowRight') {
+        goToProject(carouselIdx + 1);
+        resetCarouselTimer();
+      }
     });
 
     // Touch / mouse drag swipe
@@ -203,9 +238,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function onDragEnd() {
       if (dragStartX === null) return;
       track.classList.remove('is-dragging');
-      if (dragDeltaX < -SWIPE_THRESHOLD)      goToProject(carouselIdx + 1);
-      else if (dragDeltaX > SWIPE_THRESHOLD)  goToProject(carouselIdx - 1);
-      else                                     goToProject(carouselIdx); // snap back
+      if (dragDeltaX < -SWIPE_THRESHOLD) {
+        goToProject(carouselIdx + 1);
+        resetCarouselTimer();
+      } else if (dragDeltaX > SWIPE_THRESHOLD) {
+        goToProject(carouselIdx - 1);
+        resetCarouselTimer();
+      } else {
+        goToProject(carouselIdx); // snap back
+      }
       dragStartX = null;
     }
 
