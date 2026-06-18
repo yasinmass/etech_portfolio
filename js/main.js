@@ -63,17 +63,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const dots   = document.querySelectorAll('.hero-dot');
   let currentSlide = 0;
   let slideshowTimer = null;
-  const SLIDE_DURATION = 3500;  // ms each slide is visible (exactly 3.5 seconds as requested)
+  const SLIDE_DURATION = 3500;  // ms each slide is visible (exactly 3.5 seconds)
   const FADE_DURATION  = 800;   // ms — matched to CSS transition
 
   function goToSlide(index) {
-    // Remove active from current
-    slides[currentSlide].classList.remove('active');
-    if (dots && dots[currentSlide]) {
-      dots[currentSlide].classList.remove('active');
+    const prevSlide = currentSlide;
+
+    // Remove active and add fade-out to outgoing slide
+    slides[prevSlide].classList.remove('active');
+    slides[prevSlide].classList.add('fade-out');
+
+    // Clean up fade-out class after 800ms transition ends
+    setTimeout(() => {
+      slides[prevSlide].classList.remove('fade-out');
+    }, 800);
+
+    if (dots && dots[prevSlide]) {
+      dots[prevSlide].classList.remove('active');
     }
 
-    // Force animation restart: remove, reflow, re-add
+    // Force animation restart on incoming slide: remove, reflow, re-add
     slides[index].style.animation = 'none';
     void slides[index].offsetWidth; // trigger reflow
     slides[index].style.animation  = '';
@@ -121,30 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(slideshowTimer);
       } else {
         resetSlideshow();
-      }
-    });
-  }
-
-  // Smooth mouse-move parallax effect for the active hero slide
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    hero.addEventListener('mousemove', (e) => {
-      const { width, height } = hero.getBoundingClientRect();
-      const moveX = ((e.clientX - width / 2) / (width / 2)) * -20; // max -20px to 20px translation
-      const moveY = ((e.clientY - height / 2) / (height / 2)) * -20;
-      
-      const activeSlide = document.querySelector('.hero-slide.active');
-      if (activeSlide) {
-        activeSlide.style.setProperty('--parallax-x', `${moveX}px`);
-        activeSlide.style.setProperty('--parallax-y', `${moveY}px`);
-      }
-    });
-
-    hero.addEventListener('mouseleave', () => {
-      const activeSlide = document.querySelector('.hero-slide.active');
-      if (activeSlide) {
-        activeSlide.style.setProperty('--parallax-x', '0px');
-        activeSlide.style.setProperty('--parallax-y', '0px');
       }
     });
   }

@@ -292,33 +292,29 @@ nav.links a:hover::after {
 /* Individual slide */
 .hero-slide {
   position: absolute;
-  inset: -40px; /* Bleed outer edges for parallax and scaling */
+  inset: 0; /* Cover container fully without extra crop margins */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.8s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform, opacity;
-  transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.02);
+  transition: opacity 0.8s ease;
+  will-change: opacity;
 }
 
 .hero-slide.active {
   opacity: 1;
-  animation: cinematicDollyOut 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: cinematicPushIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .hero-slide.fade-out {
   opacity: 0;
   transition: opacity 0.8s ease;
+  transform: scale(1.08); /* Retain final zoom scale during transition to prevent snapping */
 }
 
-@keyframes cinematicDollyOut {
-  0% {
-    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.12);
-  }
-  100% {
-    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.02);
-  }
+@keyframes cinematicPushIn {
+  0%   { transform: scale(1.0); }
+  100% { transform: scale(1.08); }
 }
 
 /* Dark overlay with premium architectural lighting beam */
