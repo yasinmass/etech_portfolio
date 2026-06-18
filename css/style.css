@@ -279,6 +279,7 @@ nav.links a:hover::after {
   justify-content: center;
   color: #fff;
   padding: 0;
+  background-color: var(--charcoal);
 }
 
 /* Slides container */

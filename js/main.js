@@ -118,5 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Preload remaining slideshow images in background after window load
+  window.addEventListener('load', () => {
+    const imagesToPreload = [
+      'assets/elevations/build2.jpeg',
+      'assets/elevations/build3.jpeg',
+      'assets/elevations/build4.jpeg',
+      'assets/elevations/build6.jpeg'
+    ];
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  });
   // ── End Hero Slideshow ───────────────────────────────────────────────────────
 });
