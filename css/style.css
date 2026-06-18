@@ -304,7 +304,7 @@ nav.links a:hover::after {
 
 .hero-slide.active {
   opacity: 1;
-  animation: cinematicPushIn 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: cinematicDollyOut 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .hero-slide.fade-out {
@@ -312,12 +312,12 @@ nav.links a:hover::after {
   transition: opacity 0.8s ease;
 }
 
-@keyframes cinematicPushIn {
+@keyframes cinematicDollyOut {
   0% {
-    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.02);
+    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.12);
   }
   100% {
-    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.10);
+    transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px)) scale(1.02);
   }
 }
 
