@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Tech Builders — Construction, Planning &amp; Design | Attur, Salem</title>
+<meta name="description" content="E-Tech Builders handles construction end to end, from land to key handover. Planning, design, elevation and construction in Attur, Salem, Tamil Nadu.">
+<link rel="icon" type="image/png" href="assets/etech-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "E-Tech Builders",
+  "image": "",
+  "telephone": "+91-00000-00000",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Attur",
+    "addressRegion": "Salem, Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "areaServed": "Attur, Salem",
+  "description": "Building construction end to end, from land to key handover. Planning, design, elevation and construction."
+}
+</script>
+
+<style>
+  :root{
+    --charcoal:#211F1C;
+    --charcoal-2:#2A2823;
+    --orange:#F20F16;
+    --orange-dark:#BD0C11;
+    --concrete:#EDEAE2;
+    --concrete-2:#E2DDD0;
+    --ink:#211F1C;
+    --muted:#6B6862;
+    --white:#FFFFFF;
+    --line:rgba(33,31,28,0.14);
+    --line-dark:rgba(255,255,255,0.09);
+    --mono:'IBM Plex Mono', monospace;
+    --display:'Oswald', sans-serif;
+    --body-font:'Work Sans', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--body-font);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.7;
+    padding-bottom:64px; /* room for sticky mobile call bar */
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  section{padding:64px 20px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  h1,h2,h3{font-family:var(--display);text-transform:uppercase;letter-spacing:0.01em;margin:0;line-height:1.15;font-weight:600;}
+  .eyebrow{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin:0 0 10px;}
+  p{margin:0 0 1rem;}
+  .muted{color:var(--muted);}
+
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--orange);color:var(--charcoal);padding:8px 14px;z-index:200;}
+  .skip-link:focus{left:8px;top:8px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(33,31,28,0.96);
+    backdrop-filter:blur(4px);
+  }
+  .nav-row{
+    max-width:1080px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;}
+  .logo-img{width:30px;height:30px;object-fit:contain;flex-shrink:0;}
+  .logo-text{font-family:var(--display);font-size:1rem;letter-spacing:0.02em;text-transform:uppercase;}
+  nav.links{display:none;gap:28px;font-size:0.85rem;color:#cfcbc2;}
+  nav.links a:hover{color:var(--orange);}
+  .header-actions{display:flex;align-items:center;gap:10px;}
+  .call-pill{
+    display:none;
+    font-family:var(--mono);font-size:0.78rem;color:#fff;
+    border:1px solid rgba(255,255,255,0.25);padding:8px 14px;
+  }
+  .menu-btn{
+    background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;
+    padding:4px;line-height:1;
+  }
+
+  @media(min-width:860px){
+    nav.links{display:flex;}
+    .call-pill{display:inline-flex;align-items:center;gap:8px;}
+    .menu-btn{display:none;}
+  }
+
+  /* mobile full menu */
+  #mobileMenu{
+    position:fixed;inset:0;background:var(--charcoal);z-index:150;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;
+    transform:translateY(-100%);transition:transform 0.25s ease;
+  }
+  #mobileMenu.open{transform:translateY(0);}
+  #mobileMenu a{color:#fff;font-family:var(--display);font-size:1.5rem;text-transform:uppercase;letter-spacing:0.02em;}
+  #mobileMenu .close-btn{position:absolute;top:18px;right:20px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--charcoal);
+    background-image:
+      linear-gradient(var(--line-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+    background-size:28px 28px;
+    color:#fff;
+    padding:72px 20px 56px;
+    text-align:center;
+  }
+  .hero h1{font-size:clamp(2rem,8vw,3.2rem);max-width:680px;margin:0 auto 18px;}
+  .hero h1 span{color:var(--orange);}
+  .hero p.sub{color:#bdb9b0;max-width:480px;margin:0 auto 28px;font-size:0.98rem;}
+  .hero-loc{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;color:#8d8a82;margin:0 0 18px;text-transform:uppercase;}
+  .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:34px;}
+  .btn{
+    font-family:var(--body-font);font-weight:600;font-size:0.88rem;
+    padding:13px 24px;border:1px solid transparent;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-primary:hover{background:var(--orange-dark);}
+  .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,0.3);}
+  .btn-outline:hover{border-color:#fff;}
+  .chip-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .chip{
+    font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;
+    border:1px solid rgba(255,255,255,0.18);padding:8px 12px;color:#d8d5cc;
+    display:flex;align-items:center;gap:6px;
+  }
+  .chip i{color:var(--orange);font-size:14px;}
+
+  /* ---------- Section heading ---------- */
+  .section-head{margin-bottom:36px;text-align:center;}
+  .section-head h2{font-size:clamp(1.4rem,5vw,2rem);}
+  .section-head p{color:var(--muted);max-width:480px;margin:10px auto 0;font-size:0.95rem;}
+
+  /* dimension divider */
+  .dim-divider{
+    display:flex;align-items:center;gap:10px;justify-content:center;
+    font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--muted);
+    text-transform:uppercase;margin:0 0 8px;
+  }
+  .dim-divider::before,.dim-divider::after{content:"";flex:1;max-width:60px;height:1px;background:var(--line);}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--white);}
+  .card-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+  @media(min-width:640px){.card-grid{grid-template-columns:1fr 1fr;}}
+  .card{
+    position:relative;background:#fff;border:1px solid var(--line);
+    padding:26px 22px;
+  }
+  .card::before,.card::after{content:"";position:absolute;width:14px;height:14px;}
+  .card::before{top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .card::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+  .card i{font-size:26px;color:var(--orange);}
+  .card h3{font-size:1.05rem;margin:14px 0 6px;text-transform:none;font-family:var(--body-font);font-weight:600;}
+  .card p{font-size:0.88rem;color:var(--muted);margin:0;}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--concrete);}
+  .steps{display:flex;flex-direction:column;gap:0;position:relative;padding-left:30px;}
+  .steps::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:1px;background:var(--line);border-left:1px dashed var(--orange);}
+  .step{position:relative;padding:0 0 32px 26px;}
+  .step:last-child{padding-bottom:0;}
+  .step-num{
+    position:absolute;left:-30px;top:0;width:28px;height:28px;
+    background:var(--charcoal);color:var(--orange);
+    font-family:var(--mono);font-size:0.72rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{font-size:0.98rem;text-transform:none;font-family:var(--body-font);font-weight:600;margin:0 0 4px;}
+  .step p{font-size:0.86rem;color:var(--muted);margin:0;}
+
+  @media(min-width:860px){
+    .steps{flex-direction:row;padding-left:0;gap:0;}
+    .steps::before{left:14px;right:14px;top:14px;bottom:auto;height:1px;width:auto;border-left:none;border-top:1px dashed var(--orange);}
+    .step{flex:1;padding:40px 14px 0;text-align:center;}
+    .step-num{left:50%;top:0;transform:translateX(-50%);}
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--white);}
+  .showcase{display:flex;flex-direction:column;gap:40px;margin-bottom:40px;}
+  .showcase-item{display:flex;flex-direction:column;gap:18px;}
+  @media(min-width:760px){
+    .showcase-item{flex-direction:row;align-items:center;gap:36px;}
+    .showcase-item.reverse{flex-direction:row-reverse;}
+  }
+  .showcase-img{flex:1 1 56%;border:1px solid var(--line);padding:4px;position:relative;}
+  .showcase-img::before,.showcase-img::after{content:"";position:absolute;width:16px;height:16px;}
+  .showcase-img::before{top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .showcase-img::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+  .showcase-img img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+  .showcase-info{flex:1 1 44%;}
+  .showcase-info h3{font-family:var(--body-font);text-transform:none;font-weight:600;font-size:1.15rem;margin:6px 0 8px;}
+  .showcase-info p{font-size:0.9rem;color:var(--muted);margin:0;}
+  .more-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;}
+  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(min-width:640px){.gallery-grid{grid-template-columns:repeat(4,1fr);}}
+  .gallery-item{position:relative;border:1px solid var(--line);padding:4px;}
+  .gallery-item img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+  .gallery-tag{
+    position:absolute;bottom:10px;left:10px;background:var(--charcoal);color:#fff;
+    font-family:var(--mono);font-size:0.62rem;padding:4px 8px;text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .gallery-note{text-align:center;color:var(--muted);font-size:0.82rem;margin-top:18px;}
+
+  /* ---------- Project card ---------- */
+  .showcase-item{background:#f7f6f3;border:1px solid var(--line);}
+  .showcase-img{border:none;padding:0;}
+  .showcase-img::before,.showcase-img::after{display:none;}
+  .showcase-img img{aspect-ratio:16/9;}
+  .showcase-info{padding:28px 24px 24px;}
+  .showcase-info .eyebrow{color:var(--muted);margin-bottom:10px;}
+  .showcase-info h3{font-family:var(--display);font-size:clamp(1.2rem,4vw,1.6rem);text-transform:uppercase;margin:0 0 10px;}
+  .showcase-info > p{color:var(--muted);margin:0 0 20px;}
+  .project-divider{height:1px;background:var(--line);margin:0 0 18px;}
+  .project-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .project-stats .stat-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
+  .project-stats .stat-value{font-family:var(--display);font-size:1.05rem;font-weight:600;text-transform:uppercase;margin:0;}
+  @media(min-width:760px){
+    .showcase-item{max-width:720px;margin:0 auto;flex-direction:column;align-items:stretch;}
+  }
+
+  /* ---------- Why choose us ---------- */
+  .why{background:var(--charcoal);color:#fff;}
+  .why .section-head p{color:#a8a59c;}
+  .why-layout{display:flex;flex-direction:column;gap:36px;}
+  @media(min-width:860px){.why-layout{flex-direction:row;align-items:flex-start;gap:48px;}}
+  .founder-block{text-align:center;flex:0 0 220px;}
+  @media(min-width:860px){.founder-block{text-align:left;}}
+  .founder-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:3px solid var(--orange);}
+  @media(min-width:860px){.founder-photo{margin:0 0 16px;}}
+  .founder-names{font-family:var(--display);font-size:1.1rem;text-transform:uppercase;color:#fff;margin:0 0 4px;}
+  .founder-tag{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin:0 0 12px;}
+  .founder-bio{font-size:0.88rem;color:#a8a59c;max-width:280px;margin:0 auto;}
+  @media(min-width:860px){.founder-bio{margin:0;}}
+  .why-grid{display:flex;flex-direction:column;gap:22px;flex:1;text-align:left;}
+  .why-item{display:flex;align-items:flex-start;gap:14px;}
+  .why-item i{font-size:22px;color:var(--orange);margin-top:2px;flex-shrink:0;}
+  .why-item h3{margin:0 0 4px;font-size:0.95rem;text-transform:none;font-family:var(--body-font);font-weight:600;}
+  .why-item p{margin:0;font-size:0.85rem;color:#a8a59c;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--concrete);}
+  .t-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:640px){.t-grid{grid-template-columns:1fr 1fr;}}
+  .t-card{background:#fff;border:1px dashed var(--line);padding:22px;}
+  .t-card .stars{color:var(--orange);font-size:0.85rem;margin-bottom:10px;}
+  .t-card p.quote{font-style:italic;color:var(--muted);font-size:0.88rem;margin-bottom:10px;}
+  .t-card p.who{font-family:var(--mono);font-size:0.7rem;color:var(--muted);text-transform:uppercase;margin:0;}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--white);}
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:32px;}
+  @media(min-width:860px){.contact-grid{grid-template-columns:1fr 1fr;}}
+  .info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;}
+  .info-row i{color:var(--orange);font-size:18px;margin-top:2px;}
+  .info-row .label{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;color:var(--muted);letter-spacing:0.06em;margin:0 0 2px;}
+  .info-row .value{font-size:0.95rem;margin:0;}
+  .map-frame{border:1px solid var(--line);margin-top:20px;height:200px;overflow:hidden;}
+  .map-frame iframe{width:100%;height:100%;border:0;}
+
+  form.quote-form{display:flex;flex-direction:column;gap:14px;}
+  .field label{display:block;font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:6px;}
+  .field input,.field textarea{
+    width:100%;border:1px solid var(--line);padding:12px;font-family:var(--body-font);font-size:0.95rem;
+    background:var(--concrete);
+  }
+  .field input:focus,.field textarea:focus{outline:2px solid var(--orange);outline-offset:1px;}
+  .field textarea{resize:vertical;min-height:90px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--charcoal);color:#a8a59c;padding:44px 20px 28px;}
+  .footer-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;max-width:1080px;margin:0 auto;}
+  footer .logo-text{color:#fff;}
+  .footer-col p{font-size:0.85rem;max-width:240px;}
+  .footer-col .label{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;color:#6f6c64;margin-bottom:10px;letter-spacing:0.06em;}
+  .copyright{text-align:center;font-size:0.75rem;color:#6f6c64;margin-top:36px;border-top:1px solid var(--line-dark);padding-top:18px;}
+
+  /* ---------- Sticky mobile call bar ---------- */
+  .call-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:120;
+    display:flex;
+    padding-bottom:env(safe-area-inset-bottom,0);
+  }
+  .call-bar a{
+    flex:1;text-align:center;padding:15px 10px;font-weight:600;font-size:0.85rem;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .call-bar .call-now{background:var(--charcoal);color:#fff;}
+  .call-bar .whatsapp{background:#3DA646;color:#fff;}
+  @media(min-width:860px){.call-bar{display:none;}body{padding-bottom:0;}}
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease, transform 0.5s ease;}
+    .reveal.in{opacity:1;transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="nav-row">
+    <a href="#top" class="logo">
+      <img src="assets/etech-logo.png" alt="E-Tech Builders logo" class="logo-img">
+      <span class="logo-text">E-Tech Builders</span>
+    </a>
+    <nav class="links">
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="call-pill" href="tel:+910000000000"><i class="ti ti-phone"></i> +91 00000 00000</a>
+      <button class="menu-btn" id="openMenu" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileMenu">
+  <button class="close-btn" id="closeMenu" aria-label="Close menu"><i class="ti ti-x"></i></button>
+  <a href="#projects">Projects</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <p class="hero-loc">Attur · Salem · Tamil Nadu</p>
+    <h1>From land to key handover.<br><span>Built right. Built fast.</span></h1>
+    <p class="sub">E-Tech Builders handles your construction end to end: planning, design, elevation and building, with one team accountable from start to finish.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary"><i class="ti ti-clipboard-list"></i> Get a free quote</a>
+      <a href="tel:+910000000000" class="btn btn-outline"><i class="ti ti-phone"></i> Call now</a>
+    </div>
+    <div class="chip-row">
+      <span class="chip"><i class="ti ti-calendar"></i> 8+ years building</span>
+      <span class="chip"><i class="ti ti-shield-check"></i> Quality</span>
+      <span class="chip"><i class="ti ti-bolt"></i> Fast work</span>
+    </div>
+  </section>
+
+  <section class="gallery" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Our work</p>
+        <h2>Recent projects</h2>
+        <p>Sample images shown below — swap these for your own project photos.</p>
+      </div>
+      <div class="showcase">
+        <div class="showcase-item reveal">
+          <div class="showcase-img"><img src="https://picsum.photos/seed/etech-house1/900/520" alt="Completed house project, sample image" loading="lazy"></div>
+          <div class="showcase-info">
+            <p class="eyebrow">Completed project</p>
+            <h3>Independent house — Attur</h3>
+            <p>Planned, designed and built end to end, from the first site visit to handover.</p>
+            <div class="project-divider"></div>
+            <div class="project-stats">
+              <div>
+                <p class="stat-label">Area (SBA)</p>
+                <p class="stat-value">1,800 sq.ft</p>
+              </div>
+              <div>
+                <p class="stat-label">Timeline</p>
+                <p class="stat-value">7 months</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="more-label">More from our recent work</p>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-site1/360/270" alt="Construction site in progress, sample image" loading="lazy"><span class="gallery-tag">In progress</span></div>
+        <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-house3/360/270" alt="Completed house project, sample image" loading="lazy"><span class="gallery-tag">Residential</span></div>
+        <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-interior1/360/270" alt="Interior finishing work, sample image" loading="lazy"><span class="gallery-tag">Interior</span></div>
+        <div class="gallery-item reveal"><img src="https://picsum.photos/seed/etech-site2/360/270" alt="Construction site, sample image" loading="lazy"><span class="gallery-tag">In progress</span></div>
+      </div>
+      <p class="gallery-note">Showing placeholder images for now — send your real project photos and we'll swap them in.</p>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Our services</p>
+        <h2>What we build</h2>
+        <p>Every stage handled in-house, so nothing falls between contractors.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card reveal">
+          <i class="ti ti-clipboard-list"></i>
+          <h3>Planning</h3>
+          <p>Site assessment, layout and budgeting sorted before work begins.</p>
+        </div>
+        <div class="card reveal">
+          <i class="ti ti-ruler-2"></i>
+          <h3>Design &amp; elevation</h3>
+          <p>Elevation styles and floor plans designed around how you'll actually live.</p>
+        </div>
+        <div class="card reveal">
+          <i class="ti ti-building"></i>
+          <h3>Construction</h3>
+          <p>In-house crew, quality materials and regular site checks at every stage.</p>
+        </div>
+        <div class="card reveal">
+          <i class="ti ti-key"></i>
+          <h3>Handover</h3>
+          <p>Final walkthrough and keys handed to you, ready to move in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Client feedback</p>
+        <h2>What clients say</h2>
+      </div>
+      <div class="t-grid">
+        <div class="t-card reveal">
+          <p class="stars">★★★★★</p>
+          <p class="quote">Sample review — replace with a real quote from a happy customer.</p>
+          <p class="who">— Add client name, Attur</p>
+        </div>
+        <div class="t-card reveal">
+          <p class="stars">★★★★★</p>
+          <p class="quote">Sample review — replace with a real quote from a happy customer.</p>
+          <p class="who">— Add client name, Salem</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Let's build it</h2>
+        <p>Tell us about your plot and plans — we'll get back with a free quote.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="info-row">
+            <i class="ti ti-map-pin"></i>
+            <div><p class="label">Address</p><p class="value">Attur, Salem, Tamil Nadu</p></div>
+          </div>
+          <div class="info-row">
+            <i class="ti ti-phone"></i>
+            <div><p class="label">Phone</p><p class="value">+91 00000 00000</p></div>
+          </div>
+          <div class="info-row">
+            <i class="ti ti-mail"></i>
+            <div><p class="label">Email</p><p class="value">contact@etechbuilders.com</p></div>
+          </div>
+          <div class="info-row">
+            <i class="ti ti-brand-whatsapp"></i>
+            <div><p class="label">WhatsApp</p><p class="value">+91 00000 00000</p></div>
+          </div>
+          <div class="map-frame">
+            <iframe src="https://maps.google.com/maps?q=Attur,Salem,Tamil%20Nadu&output=embed" loading="lazy" title="Map showing Attur, Salem, Tamil Nadu"></iframe>
+          </div>
+        </div>
+        <form class="quote-form reveal" id="quoteForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" required>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" placeholder="Plot size, location, when you're hoping to start..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="ti ti-brand-whatsapp"></i> Send on WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <a href="#top" class="logo" style="margin-bottom:12px;">
+        <img src="assets/etech-logo.png" alt="E-Tech Builders logo" class="logo-img">
+        <span class="logo-text">E-Tech Builders</span>
+      </a>
+      <p>Building construction, end to end — from land to key handover.</p>
+    </div>
+    <div class="footer-col">
+      <p class="label">Quick links</p>
+      <p><a href="#projects">Projects</a></p>
+      <p><a href="#services">Services</a></p>
+      <p><a href="#contact">Contact</a></p>
+    </div>
+    <div class="footer-col">
+      <p class="label">Contact</p>
+      <p>Attur, Salem, Tamil Nadu<br>+91 00000 00000<br>contact@etechbuilders.com</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> E-Tech Builders. All rights reserved.</p>
+</footer>
+
+<div class="call-bar">
+  <a href="tel:+910000000000" class="call-now"><i class="ti ti-phone"></i> Call now</a>
+  <a href="https://wa.me/910000000000" class="whatsapp" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var openBtn = document.getElementById('openMenu');
+  var closeBtn = document.getElementById('closeMenu');
+  var menu = document.getElementById('mobileMenu');
+  openBtn.addEventListener('click', function(){ menu.classList.add('open'); });
+  closeBtn.addEventListener('click', function(){ menu.classList.remove('open'); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+  });
+
+  // WhatsApp quote form
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var text = "Hi E-Tech Builders, I'm " + name + " (" + phone + "). " + message;
+    var url = "https://wa.me/910000000000?text=" + encodeURIComponent(text);
+    window.open(url, '_blank');
+  });
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
