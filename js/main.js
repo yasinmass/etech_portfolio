@@ -63,13 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const dots   = document.querySelectorAll('.hero-dot');
   let currentSlide = 0;
   let slideshowTimer = null;
-  const SLIDE_DURATION = 6000;  // ms each slide is visible
+  const SLIDE_DURATION = 8000;  // ms each slide is visible (increased for premium slow zoom feel)
   const FADE_DURATION  = 1800;  // ms — must match CSS transition
 
   function goToSlide(index) {
     // Remove active from current
     slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
+    if (dots && dots[currentSlide]) {
+      dots[currentSlide].classList.remove('active');
+    }
 
     // Force Ken Burns restart: remove, reflow, re-add
     slides[index].style.animation = 'none';
@@ -78,7 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentSlide = index;
     slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
+    if (dots && dots[currentSlide]) {
+      dots[currentSlide].classList.add('active');
+    }
   }
 
   function nextSlide() {
@@ -98,16 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (slides.length > 1) {
     startSlideshow();
 
-    // Dot click navigation
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.dataset.index, 10);
-        if (idx !== currentSlide) {
-          goToSlide(idx);
-          resetSlideshow();
-        }
+    // Dot click navigation (safe if no dots exist)
+    if (dots && dots.length > 0) {
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.dataset.index, 10);
+          if (idx !== currentSlide) {
+            goToSlide(idx);
+            resetSlideshow();
+          }
+        });
       });
-    });
+    }
 
     // Pause on visibility change to avoid timing drift
     document.addEventListener('visibilitychange', () => {
