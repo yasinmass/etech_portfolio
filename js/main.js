@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dots   = document.querySelectorAll('.hero-dot');
   let currentSlide = 0;
   let slideshowTimer = null;
-  const SLIDE_DURATION = 8000;  // ms each slide is visible (increased for premium slow zoom feel)
-  const FADE_DURATION  = 1800;  // ms — must match CSS transition
+  const SLIDE_DURATION = 3500;  // ms each slide is visible (exactly 3.5 seconds as requested)
+  const FADE_DURATION  = 800;   // ms — matched to CSS transition
 
   function goToSlide(index) {
     // Remove active from current
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dots[currentSlide].classList.remove('active');
     }
 
-    // Force Ken Burns restart: remove, reflow, re-add
+    // Force animation restart: remove, reflow, re-add
     slides[index].style.animation = 'none';
     void slides[index].offsetWidth; // trigger reflow
     slides[index].style.animation  = '';
@@ -121,6 +121,30 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(slideshowTimer);
       } else {
         resetSlideshow();
+      }
+    });
+  }
+
+  // Smooth mouse-move parallax effect for the active hero slide
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const { width, height } = hero.getBoundingClientRect();
+      const moveX = ((e.clientX - width / 2) / (width / 2)) * -20; // max -20px to 20px translation
+      const moveY = ((e.clientY - height / 2) / (height / 2)) * -20;
+      
+      const activeSlide = document.querySelector('.hero-slide.active');
+      if (activeSlide) {
+        activeSlide.style.setProperty('--parallax-x', `${moveX}px`);
+        activeSlide.style.setProperty('--parallax-y', `${moveY}px`);
+      }
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      const activeSlide = document.querySelector('.hero-slide.active');
+      if (activeSlide) {
+        activeSlide.style.setProperty('--parallax-x', '0px');
+        activeSlide.style.setProperty('--parallax-y', '0px');
       }
     });
   }
